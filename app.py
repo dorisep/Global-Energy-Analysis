@@ -3,7 +3,7 @@ import os
 from flask import Flask, render_template, redirect, request, url_for, send_from_directory
 
 # from flask_pymongo import PyMongo
-from flask_pymongo import pymongo
+import pymongo
 
 
 # Create an instance of Flask
@@ -23,19 +23,19 @@ db = client.Global_Energy_Analysis
 
 # Route to render index.html template using data from Mongo
 @app.route("/")
-def home():
+def index():
     # Find one record of data from the mongo database
-    # Project2 = list(db.Project2.find())
-
+    TECS = list(db.TEC.find())
+    print(TECS)
     # Return the homepage
-    return render_template('index.html')
+    return render_template('index.html', TECS=TECS)
 
 # Route to render TEC.html template using data from Mongo
 @app.route("/TEC.html")
 def TEC2():
     # Find one record of data from the mongo database
     TEC = list(db.TEC.find())
-
+    print(TEC)
 
     # Return template and data
     return render_template('TEC.html', TEC = TEC)
@@ -45,7 +45,7 @@ def TEC2():
 def TEP():
     # Find one record of data from the mongo database
     TEP = list(db.TEP.find())
-    print(TEP)
+    # print(TEP)
 
 
     # Return template and data
@@ -56,6 +56,7 @@ def TEP():
 def EBOT():
     # Find one record of data from the mongo database
     EBOT = list(db.EBOT.find())
+    print(EBOT)
 
 
     # Return template and data
