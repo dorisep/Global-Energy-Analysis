@@ -225,10 +225,10 @@ var myChart = new Chart(ctx, {
 
 
 
-$(document).ready(function () {
-    $('table.highchart').highchartTable();
-});
+// $(document).ready(function () {
+//     $('table.highchart').highchartTable();
+// });
 
-}).catch (function (error) {
-    console.log(error);
-});
+// }).catch (function (error) {
+//     console.log(error);
+// });

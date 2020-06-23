@@ -1,105 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-        <meta charset="UTF-8">
-        <title>Class Project</title>
-        <script src="/static/jquery.min.js" type="text/javascript"></script>
-        
-        <script src="/static/highChart.js" type="text/javascript"></script>
-        <script src="/static/highChartsTable.js" type="text/javascript"></script>
-       
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<head>
+    <meta charset="UTF-8">
+    <title>Class Project</title>
+    <script src="/static/jquery.min.js" type="text/javascript"></script>
 
-      
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-            crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-            crossorigin="anonymous"></script>
-     
-    </head>
+    <script src="/static/highChart.js" type="text/javascript"></script>
+    <script src="/static/highChartsTable.js" type="text/javascript"></script>
 
-    <body>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">Project2</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Tables
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="TEC.html">Total Energy Consumption</a>
-                            <a class="dropdown-item" href="TEP.html">Total Energy Production</a>
-                            <a class="dropdown-item" href="EBOT.html">Energy Balance Of Trade</a>
-                            <a class="dropdown-item" href="EIG.html">Energy Intensity of GDP</a>
-                            <a class="dropdown-item" href="CC.html">Country Coordinates</a>
-
-                        </div>
-                    </li>
-                    
-                </ul>
-
-                </form>
-            </div>
-        </nav>
-
-        <div class="container-fluid">
-            <div class="jumbotron text-center">
-                <h2>A Glimpse of Global Energy Trends</h2>
-                <p>Energy consumption. Energy production. Balance of Trade. Intensity of GDP.</p>
-
-            </div>
-            <div>
-               <ul>
-                {% for t in TEC %}
-                <li>{{ t.country }}: {{ t.1990 }}</li>
-                {% endfor %}
-               </ul> 
-                
-            </div>
-            <h4>Total Energy Consumption (Mtoe) :</h4>
-            <h4>TEC 1990 - 2018</h4>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
 
-            <table border="1" class="dataframe">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
 
-                <div class="w3-container w3-padding-32"></div>
-                <table class="highchart" data-graph-container-before="1" data-graph-type="line">
-                    <table>
-                        <thead>
-                         {%- for t in TEC %}
-                            <th>{{ t.country }}</th>
-                         {%- endfor %}
-                        </thead>
-                       
-                        <!-- <tbody>
-                        {%- for row in items %}
-                           <tr>
-                           {%- for column in columns %}
-                              <td>{{ row|attr(column) }}</td>
-                           {%- endfor %}
-                           </tr>
-                        {%- endfor %}
-                        </tbody> -->
-                        </table>
-                           
+</head>
 
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Project2</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Tables
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="TEC.html">Total Energy Consumption</a>
+                        <a class="dropdown-item" href="TEP.html">Total Energy Production</a>
+                        <a class="dropdown-item" href="EBOT.html">Energy Balance Of Trade</a>
+                        <a class="dropdown-item" href="EIG.html">Energy Intensity of GDP</a>
+                        <a class="dropdown-item" href="CC.html">Country Coordinates</a>
+
+                    </div>
+                </li>
+
+            </ul>
+
+            </form>
         </div>
-        
-    </body>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="jumbotron text-center">
+            <h2>A Glimpse of Global Energy Trends</h2>
+            <p>Energy consumption</p>
+        </div>
+
+        <h4>Total Energy Consumption (Mtoe) :</h4>
+        <h4>TEC 2010 - 2018</h4>
+        <table class="highchart" data-graph-container-before="1" data-graph-type="line" style="display:none">
+            <thead>
+                <tr style="text-align: right;">
+                    <th>Year</th>
+                    {%- for t in TEC %}
+                    <th>{{t.country}}</th>
+                    {%- endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>2010</td>
+                    {%- for t in TEC %}
+                    <td>{{t.trade2010}}</td>
+                    {%- endfor %}
+                </tr>
+                <tr>
+                    <td>2011</td>
+                    {%- for t in TEC %}
+                    <td>{{t.trade2011}}</td>
+                    {%- endfor %}
+                </tr>
+                <tr>
+                    <td>2012</td>
+                    {%- for t in TEC %}
+                    <td>{{t.trade2012}}</td>
+                    {%- endfor %}
+                </tr>
+                <tr>
+                    <td>2013</td>
+                    {%- for t in TEC %}
+                    <td>{{t.trade2013}}</td>
+                    {%- endfor %}
+                </tr>
+                <tr>
+                    <td>2014</td>
+                    {%- for t in TEC %}
+                    <td>{{t.trade2014}}</td>
+                    {%- endfor %}
+                </tr>
+                <tr>
+                    <td>2015</td>
+                    {%- for t in TEC %}
+                    <td>{{t.trade2015}}</td>
+                    {%- endfor %}
+                </tr>
+                <tr>
+                    <td>2016</td>
+                    {%- for t in TEC %}
+                    <td>{{t.trade2016}}</td>
+                    {%- endfor %}
+                </tr>
+                <tr>
+                    <td>2017</td>
+                    {%- for t in TEC %}
+                    <td>{{t.trade2017}}</td>
+                    {%- endfor %}
+                </tr>
+                <tr>
+                    <td>2018</td>
+                    {%- for t in TEC %}
+                    <td>{{t.trade2018}}</td>
+                    {%- endfor %}
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+<script>$(document).ready(function () {
+        $('table.highchart').highchartTable();
+    });</script>
 
 </html>

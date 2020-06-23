@@ -25,17 +25,18 @@ db = client.Global_Energy_Analysis
 @app.route("/")
 def index():
     # Find one record of data from the mongo database
-    TECS = list(db.TEC.find())
-    print(TECS)
+    TEC = list(db.TEC_Mod.find())
+    TEP = list(db.TEP_Mod.find())
+    EBOT = list(db.EBOT_Mod.find())
+    EIG = list(db.EIG_Mod.find())
     # Return the homepage
-    return render_template('index.html', TECS=TECS)
+    return render_template('index.html', TEC=TEC, TEP=TEP, EIG=EIG, EBOT=EBOT)
 
 # Route to render TEC.html template using data from Mongo
 @app.route("/TEC.html")
-def TEC2():
+def TEC():
     # Find one record of data from the mongo database
-    TEC = list(db.TEC.find())
-    print(TEC)
+    TEC = list(db.TEC_Mod.find())
 
     # Return template and data
     return render_template('TEC.html', TEC = TEC)
@@ -44,9 +45,7 @@ def TEC2():
 @app.route("/TEP.html")
 def TEP():
     # Find one record of data from the mongo database
-    TEP = list(db.TEP.find())
-    # print(TEP)
-
+    TEP = list(db.TEP_Mod.find())
 
     # Return template and data
     return render_template('TEP.html', TEP = TEP)
@@ -55,10 +54,7 @@ def TEP():
 @app.route("/EBOT.html")
 def EBOT():
     # Find one record of data from the mongo database
-    EBOT = list(db.EBOT.find())
-    print(EBOT)
-
-
+    EBOT = list(db.EBOT_Mod.find())
     # Return template and data
     return render_template('EBOT.html', EBOT = EBOT)
 
@@ -66,21 +62,11 @@ def EBOT():
 @app.route("/EIG.html")
 def EIG():
     # Find one record of data from the mongo database
-    EIG = list(db.EIG.find())
-
-
+    EIG = list(db.EIG_Mod.find())
+    print(EIG)
     # Return template and data
     return render_template('EIG.html', EIG = EIG)
 
-# # Route to render CC.html template using data from Mongo
-# @app.route("/CC.html")
-# def CC():
-    # Find one record of data from the mongo database
-    # coordinates = mongo.db.coordinates.find({})
-
-
-    # Return template and data
-    # return render_template('CC.html', coordinates = coordinates)
 
 if __name__ == "__main__":
     app.run(debug=True)
